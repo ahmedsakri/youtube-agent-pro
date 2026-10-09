@@ -1,0 +1,79 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  tools:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.9", "3.12" ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Compile every tool (syntax)
+        run: |
+          python -m compileall -q skills
+
+      - name: Validate every JSON manifest
+        run: |
+          python - <<'PY'
+          import json, pathlib, sys
+          bad = False
+          for p in pathlib.Path(".").rglob("*.json"):
+              if ".git" in p.parts:
+                  continue
+              try:
+                  json.loads(p.read_text(encoding="utf-8"))
+              except Exception as e:
+                  print(f"INVALID JSON: {p}: {e}")
+                  bad = True
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Every skill has frontmatter (name + description)
+        run: |
+          python - <<'PY'
+          import pathlib, sys
+          bad = False
+          for sk in sorted(pathlib.Path("skills").glob("*/SKILL.md")):
+              text = sk.read_text(encoding="utf-8")
+              if not text.startswith("---"):
+                  print(f"NO FRONTMATTER: {sk}"); bad = True; continue
+              fm = text.split("---", 2)[1]
+              for key in ("name:", "description:"):
+                  if key not in fm:
+                      print(f"MISSING {key} in {sk}"); bad = True
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Smoke-test the tools that run standalone
+        run: |
+          set -e
+          python skills/yt-idea/ideascore.py --idea "How I got my first 1000 subscribers in 30 days" --json > /dev/null
+          python skills/yt-script/hookscore.py --hook "97% of channels quit before video 30" --json > /dev/null
+          python skills/yt-package/title.py --title "I let AI run my channel for 30 days" --thumb "AI RAN IT" --json > /dev/null
+          python skills/yt-thumbnail/thumblint.py --concept 'shocked face, red arrow, phone' --title "I let AI run my channel" --json > /dev/null
+          python skills/yt-analytics/funnel.py --impressions 42000 --ctr 3.1 --avd 2:10 --length 9:40 --json > /dev/null
+          python skills/yt-sponsor/ratecard.py --views 12000 --niche tech --placement all --json > /dev/null
+          printf "This is a test transcript. It is short, but it runs.\n" > /tmp/t.txt
+          python skills/yt-voice/voiceprint.py /tmp/t.txt --json > /dev/null
+          python - <<'PY' > /tmp/t.srt
+          def ts(sec):
+              return f"{sec//3600:02d}:{(sec%3600)//60:02d}:{sec%60:02d},000"
+          lines = []
+          for i in range(1, 9):
+              s = i * 25
+              lines += [str(i), f"{ts(s)} --> {ts(s+8)}",
+                        f"section {i} talking about topic number {i} in detail here", ""]
+          print("\n".join(lines))
+          PY
+          python skills/yt-edit/deadair.py /tmp/t.srt > /dev/null
+          python skills/yt-chapters/chapters.py /tmp/t.srt --json > /dev/null
+          echo "all tools ran"

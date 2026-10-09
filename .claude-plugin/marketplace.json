@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "youtube-agent-pro",
+  "description": "The advanced YouTube agent skill pack for Claude - 24 skills and 11 tools to run a channel end to end.",
+  "owner": { "name": "Ahmed Sakri", "email": "ahmed.f.sakri@gmail.com" },
+  "plugins": [
+    {
+      "name": "youtube-agent-pro",
+      "description": "Twenty-four Claude skills that run a YouTube channel, including a scored idea engine, a scored hook panel, title and thumbnail linters, a funnel diagnoser, a retention reader, a sponsorship rate card, a cross-platform repurposer, and a virality engine.",
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/ahmedsakri/youtube-agent-pro"
+    }
+  ]
+}
