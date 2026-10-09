@@ -9,6 +9,10 @@
 - Surface the agents across discovery surfaces: README headline, edition table and install steps,
   the marketplace and plugin manifests (description and keywords), and the GitHub description and
   topics, so the subagents are findable from search.
+- Enrich the README for readability and SEO: an SVG hero banner (`assets/og-banner.svg`), badges,
+  a table of contents, two Mermaid architecture diagrams, and an FAQ.
+- Add a root `llms.txt` so AI search engines (ChatGPT, Perplexity, Gemini, Claude) can index and
+  cite the project.
 
 ## 2.1.0 — 2026-10-09
 

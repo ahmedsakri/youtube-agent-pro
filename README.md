@@ -1,8 +1,20 @@
-# YouTube Agent Pro - Claude, ChatGPT & Codex
+<p align="center">
+  <img src="assets/og-banner.svg" alt="YouTube Agent Pro — 24 creator skills, 5 specialist Claude Code subagents and 11 local Python tools for Claude Code, ChatGPT and OpenAI Codex" width="100%">
+</p>
+
+# YouTube Agent Pro — YouTube Skills & Agents for Claude Code, ChatGPT & Codex
+
+> **The open-source YouTube creator toolkit for AI assistants.** Write scripts, titles, thumbnails,
+> SEO descriptions and Shorts — and read your own analytics — with 24 skills, 5 specialist subagents
+> and 11 local Python tools. Runs in Claude Code, ChatGPT and OpenAI Codex. MIT, no API key.
 
 [![CI](https://github.com/ahmedsakri/youtube-agent-pro/actions/workflows/ci.yml/badge.svg)](https://github.com/ahmedsakri/youtube-agent-pro/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Skills](https://img.shields.io/badge/skills-24-ff0033.svg)](#the-24-workflows)
+[![Agents](https://img.shields.io/badge/agents-5-ff0033.svg)](#agents)
+[![Works with](https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20ChatGPT%20%7C%20Codex-5a45ff.svg)](#choose-your-edition)
+[![GitHub stars](https://img.shields.io/github/stars/ahmedsakri/youtube-agent-pro?style=flat&color=ff5277)](https://github.com/ahmedsakri/youtube-agent-pro/stargazers)
 
 **One repository. 24 YouTube creator workflows per edition, 5 specialist Claude Code subagents, and 11 local Python tools — no API key required.**
 
@@ -19,6 +31,18 @@ include a YouTube uploader, scheduling service, account connection or video rend
 [Claude PDF guide](docs/guides/YouTube-Agent-Pro-Claude.pdf) ·
 [ChatGPT & Codex PDF guide](docs/guides/YouTube-Agent-Pro-OpenAI.pdf) ·
 [Download release files](https://github.com/ahmedsakri/youtube-agent-pro/releases/latest)
+
+## Contents
+
+- [Choose your edition](#choose-your-edition) — Claude Code, Codex, ChatGPT
+- [The 24 workflows](#the-24-workflows) — every skill and what it returns
+- [Agents](#agents) — 5 subagents that run whole workflows for you
+- [How it fits together](#how-it-fits-together) — agents, skills and tools at a glance
+- [YouTube SEO, with realistic expectations](#youtube-seo-with-realistic-expectations)
+- [Local tools and creator context](#local-tools-and-creator-context)
+- [FAQ](#faq)
+- [Verification and maintenance](#verification-and-maintenance)
+- [License](#license)
 
 ## Choose your edition
 
@@ -129,6 +153,46 @@ than duplicating them.
 
 Agents are a Claude Code feature; the ChatGPT and Codex edition continues to use the skills directly.
 
+## How it fits together
+
+Three layers: you talk to an **agent** (or call a **skill** directly); skills carry the instructions;
+local **Python tools** do the scoring and number-crunching on your own data.
+
+```mermaid
+flowchart TB
+    You([You])
+    subgraph Agents["5 specialist agents"]
+        P[yt-producer]
+        S[yt-strategist]
+        K[yt-packager]
+        A[yt-analyst]
+        E[yt-editor]
+    end
+    subgraph Skills["24 yt-* skills"]
+        SK[idea · script · package · thumbnail · seo · chapters · analytics · …]
+    end
+    subgraph Tools["11 local Python tools"]
+        T[title.py · funnel.py · retention.py · voice.py · …]
+    end
+    Out([Drafts, plans and analysis — your data stays local])
+    You --> Agents
+    You -. call directly .-> Skills
+    Agents --> Skills
+    Skills --> Tools
+    Tools --> Out
+```
+
+Each agent owns a slice of the channel and orchestrates the skills for it:
+
+```mermaid
+flowchart TD
+    producer["yt-producer — idea to publish-ready package"] --> strat & pack
+    strat["yt-strategist — what to make and when"] --> idea[yt-idea] & viral[yt-viral] & trend[yt-trend] & plan[yt-plan] & series[yt-series] & collab[yt-collab]
+    pack["yt-packager — the click and the session"] --> package[yt-package] & thumb[yt-thumbnail] & seo[yt-seo] & funnel[yt-funnel] & endscreen[yt-endscreen]
+    analyst["yt-analyst — read the numbers"] --> analytics[yt-analytics] & retention[yt-retention] & audit[yt-audit]
+    editor["yt-editor — post-production and distribution"] --> edit[yt-edit] & shorts[yt-shorts] & repurpose[yt-repurpose] & chapters[yt-chapters] & comment[yt-comment] & sponsor[yt-sponsor]
+```
+
 ## YouTube SEO, with realistic expectations
 
 Both editions ground titles and descriptions in the actual video, use one or two main topic terms
@@ -164,6 +228,39 @@ Voice setup is optional. Supplied context comes first; Claude's default profile 
 `~/.claude/youtube/voice.md`, while Codex uses a workspace `.youtube-agent/voice.md` when present.
 ChatGPT uses attached profiles or conversation context. Keep private exports, credentials and
 profiles out of this public repository.
+
+## FAQ
+
+**What is YouTube Agent Pro?**
+An open-source (MIT) toolkit of 24 YouTube creator skills, 5 specialist Claude Code subagents and 11
+local Python tools. It helps you plan videos and Shorts, write scripts, titles, thumbnail text and
+SEO descriptions, and read your own YouTube Analytics — inside Claude Code, ChatGPT or OpenAI Codex.
+
+**What is the difference between a skill and an agent?**
+A skill is one workflow you invoke (for example `/yt-script`). An agent is a subagent you delegate a
+whole job to — it decides which skills to run, in what order, and carries the work end to end in its
+own context. Skills work in every edition; agents are a Claude Code feature.
+
+**How do I install it in Claude Code?**
+`/plugin marketplace add ahmedsakri/youtube-agent-pro` then `/plugin install
+youtube-agent-pro@youtube-agent-pro`. For subagents, copy the `agents/yt-*.md` files into
+`~/.claude/agents/`. See [Choose your edition](#choose-your-edition) for manual and Codex/ChatGPT
+routes.
+
+**Does it work with ChatGPT and OpenAI Codex?**
+Yes. The [`openai/`](openai/README.md) edition ships 24 Codex skills, a portable plugin and a local
+installer, plus reproducible ChatGPT instructions and workflow files.
+
+**Do I need an API key or a paid plan?**
+No API key. The Python tools run locally with no network calls or extra packages. Your own AI
+provider's plan and available tools still apply.
+
+**Will it upload or schedule videos, or manage my channel?**
+No. It produces drafts, plans and analysis only. There is no uploader, scheduler, account connection
+or video renderer, and your exports and credentials stay on your machine.
+
+**Is it affiliated with YouTube, Anthropic or OpenAI?**
+No. This is an independent, community-maintained project under the MIT license.
 
 ## Verification and maintenance
 
