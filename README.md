@@ -13,16 +13,23 @@ end-screen routing - plus a hub skill that routes a vague request to the right o
 **Nothing gets published until you do it.** These skills write. You upload. Every single one ends in
 a block you copy and the same question: **ship it, or change it?**
 
-## Install
+## Install as a marketplace
 
-In Claude Code, as a plugin:
+This repo is a Claude Code plugin marketplace. Two lines in Claude Code and you have all 24 skills:
 
 ```
 /plugin marketplace add ahmedsakri/youtube-agent-pro
 /plugin install youtube-agent-pro
 ```
 
-Or copy the skills in by hand (global, every project):
+The first line registers this repo as a marketplace; the second installs the plugin from it. A
+marketplace in Claude Code is just a git repo with a `.claude-plugin/marketplace.json`, which this one
+has, so there is nothing central to sign up for. To update later: `/plugin marketplace update
+youtube-agent-pro`.
+
+## Other ways to install
+
+Copy the skills in by hand (global, every project):
 
 ```bash
 git clone https://github.com/ahmedsakri/youtube-agent-pro.git
