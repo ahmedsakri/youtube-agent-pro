@@ -26,8 +26,9 @@ that routes a vague request to the right one.
 a block you copy and the same question: **ship it, or change it?**
 
 > **New here? Read the [interactive setup guide (PDF)](docs/YouTube-Agent-Pro-Setup-Guide.pdf).**
-> A 15-page, step-by-step walkthrough: install, teach it your voice, and run your first video end to
-> end, with clickable links throughout.
+> A 16-page, step-by-step walkthrough: install, teach it your voice, and run your first video end to
+> end. Fully interactive: a clickable table of contents, and every skill and tool deep-links to its
+> file on GitHub.
 
 ## Install as a marketplace
 
