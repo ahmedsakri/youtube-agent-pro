@@ -105,6 +105,22 @@ in the Claude plugin or `$yt-script` in Codex.
 | `yt-sponsor` | Illustrative rate scenarios, pitches and integration drafts |
 | `yt-comment` | Comment triage, reply drafts and pin suggestions |
 
+## Agents
+
+The Claude edition also ships **5 specialist [agents](agents/README.md)** - subagents you can
+delegate a whole workflow to. Each one orchestrates the skills above inside its own context rather
+than duplicating them.
+
+| Agent | Role | Orchestrates |
+| --- | --- | --- |
+| [`yt-producer`](agents/yt-producer.md) | End-to-end video production, idea to publish-ready package | yt, yt-idea, yt-script, yt-package, yt-thumbnail, yt-seo, yt-chapters, yt-brief |
+| [`yt-strategist`](agents/yt-strategist.md) | What to make and when | yt-idea, yt-viral, yt-trend, yt-plan, yt-series, yt-collab |
+| [`yt-packager`](agents/yt-packager.md) | The click and the session | yt-package, yt-thumbnail, yt-seo, yt-funnel, yt-endscreen |
+| [`yt-analyst`](agents/yt-analyst.md) | Read the numbers, say what to fix first | yt-analytics, yt-retention, yt-audit |
+| [`yt-editor`](agents/yt-editor.md) | Post-production and distribution | yt-edit, yt-shorts, yt-repurpose, yt-chapters, yt-comment, yt-sponsor, yt-voice |
+
+Agents are a Claude Code feature; the ChatGPT and Codex edition continues to use the skills directly.
+
 ## YouTube SEO, with realistic expectations
 
 Both editions ground titles and descriptions in the actual video, use one or two main topic terms
