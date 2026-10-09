@@ -3,10 +3,9 @@
 **Twenty-four Claude skills and eleven tools that run a YouTube channel end to end.** Free, MIT, no
 signup, no API key, nothing to connect.
 
-This is the advanced build of the [YouTube agent skill](https://github.com/Jakeschincariol/youtube-agent-skill)
-by Jake Schincariol. It keeps all eleven of the originals and adds thirteen more: an idea engine that
-scores a topic before you film it, a thumbnail concept linter, a funnel diagnoser that finds the one
-number holding a video back, a cross-platform repurposer, series architecture, a sponsorship rate
+The pack includes an idea engine that scores a topic before you film it, a thumbnail concept linter,
+a funnel diagnoser that finds the number holding a video back, a cross-platform repurposer, series
+architecture, a sponsorship rate
 card built from your own view numbers, collab outreach, channel-page conversion, a seasonal trend
 calendar, a voiceprint that writes your `voice.md` from your own transcripts, production briefs, and
 end-screen routing - plus a hub skill that routes a vague request to the right one.
@@ -142,13 +141,6 @@ you and never touch your credentials.
 
 **Nothing invents a number.** If a skill wants a figure it does not have, it asks you for it or writes
 the line without it.
-
-## Built on
-
-The original [`youtube-agent-skill`](https://github.com/Jakeschincariol/youtube-agent-skill) by
-**Jake Schincariol** (MIT). This pack extends it; the original hook formulas, the scored-hook idea,
-the "nothing publishes" discipline and six of the eleven tools are his. Advanced skills and tools, and
-this build, by **Ahmed Sakri**.
 
 ## Licence
 
