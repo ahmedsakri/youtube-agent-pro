@@ -4,11 +4,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**One repository. 24 YouTube creator workflows per edition. 11 local Python tools.**
+**One repository. 24 YouTube creator workflows per edition, 5 specialist Claude Code subagents, and 11 local Python tools — no API key required.**
 
 Plan YouTube Shorts and long-form videos, write scripts and hooks, improve titles and thumbnail
-concepts, draft accurate SEO descriptions, and analyze your own YouTube Analytics exports.
-Choose the Claude or OpenAI edition below; each has instructions written for its host.
+concepts, draft accurate SEO descriptions, and analyze your own YouTube Analytics exports — in
+Claude Code (skills **and** subagents), ChatGPT or OpenAI Codex. Delegate a whole video to an agent,
+or call a single skill. Choose the Claude or OpenAI edition below; each has instructions written for
+its host.
 
 Free, MIT-licensed code. The Python tools need no API key or runtime packages. Your AI provider's
 plan and available tools still apply. This pack creates drafts, plans and analysis; it does not
@@ -24,6 +26,7 @@ include a YouTube uploader, scheduling service, account connection or video rend
 | --- | --- | --- |
 | Claude Code plugin | Root `skills/` and `.claude-plugin/` | `/youtube-agent-pro:yt` or `/youtube-agent-pro:yt-seo` |
 | Claude Code, manually installed skills | Root `skills/` | `/yt` or `/yt-seo` |
+| Claude Code subagents | Root [`agents/`](agents/README.md) | "Use the yt-producer agent to take this idea to a finished package" |
 | OpenAI Codex | [`openai/`](openai/README.md) | `$yt` or `$yt-seo` |
 | ChatGPT | [OpenAI instructions and workflow files](openai/chatgpt/README.md) | Ask naturally; use `@` for installed skills where supported |
 
@@ -41,6 +44,11 @@ Update the registered marketplace with `/plugin marketplace update youtube-agent
 Plugin skills use the plugin namespace. If you prefer manual installation, copy **all** root
 `skills/yt*` folders into `~/.claude/skills/` or a project's `.claude/skills/`; those use `/yt`,
 `/yt-script`, and so on. Check for existing names before copying. Use one route to avoid duplicates.
+
+To use the **subagents**, copy the root `agents/yt-*.md` files into `~/.claude/agents/` (or a
+project's `.claude/agents/`), then ask Claude to delegate — for example, *"Use the `yt-producer`
+agent to take this idea to a publish-ready package."* Agents orchestrate the skills above, so install
+both. See the [agents guide](agents/README.md) for the full list and conventions.
 
 ### OpenAI Codex
 
