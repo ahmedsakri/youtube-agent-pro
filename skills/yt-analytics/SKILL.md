@@ -1,58 +1,64 @@
 ---
 name: yt-analytics
 description: >-
-  Read a YouTube Studio export and find the single number holding a video
-  or a channel back - impressions, click-through, or retention - then say
-  what to fix first. Use for "read my analytics", "which video worked",
-  "my views dropped", "what's my CTR telling me", or a pasted Studio
-  overview export.
+  Analyze YouTube Studio data for Shorts or long-form videos, distinguish
+  traffic surfaces, and identify evidence-backed performance hypotheses.
+  Use for "read my analytics", "which video worked", "my views dropped",
+  "what's my CTR telling me", or a pasted Studio export.
 ---
 
 # yt-analytics
 
-Reach is a chain: impressions, then click-through, then retention. One link is always the binding
-constraint, and fixing any other link is wasted work. This finds the one that matters.
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
 
-A tool lives here and it runs. Feed it the numbers or the export.
+Start by identifying the format, traffic sources, publication age, and comparable channel baseline.
+A low view count alone cannot tell you whether the cause was topic, packaging, retention, or timing.
+Do not apply long-form CTR thresholds to Shorts-feed views.
+
+## Long-form Browse or Search analysis
 
 ```bash
-python3 funnel.py --impressions 42000 --ctr 3.1 --avd 2:10 --length 9:40
-python3 funnel.py stats.csv        # a Studio Overview export, one video or many
+python3 "$YT_SKILL_DIR/funnel.py" --impressions 42000 --ctr 3.1 --avd 2:10 --length 9:40
+python3 "$YT_SKILL_DIR/funnel.py" stats.csv
 ```
 
-For *where in a video* people leave, that is a different file and a different skill: **/yt-retention**
-reads the audience-retention curve. This skill reads the funnel; that one reads the drop-offs.
+Use impressions, impression click-through rate, average view duration, and actual video length.
+An Overview export may lack runtime or traffic-source detail; obtain the missing fields rather than
+substituting watch time, views, or AVD for them. Inspect the output for incomplete inputs.
 
-## Where the numbers live
+The helper's bands suggest what to inspect first, not a proven single cause:
+- **Limited impressions:** compare video age, topic demand, traffic source, and the channel's prior
+  comparable uploads. [/youtube-agent-pro:yt-idea](../yt-idea/SKILL.md) can help test a topic hypothesis.
+- **Low CTR for the same surface:** examine the title/thumbnail promise together through
+  [/youtube-agent-pro:yt-package](../yt-package/SKILL.md) and [/youtube-agent-pro:yt-thumbnail](../yt-thumbnail/SKILL.md).
+- **Weak retention for comparable videos:** examine the curve and footage using
+  [/youtube-agent-pro:yt-retention](../yt-retention/SKILL.md), rather than assuming a title rewrite fixes it.
 
-Studio -> Content -> a video -> Analytics. Impressions and click-through are on the **Reach** tab;
-average view duration is on **Engagement**; runtime is the video length. For a channel view, export
-the **Overview** table so the tool can rank many videos at once.
+## Shorts-feed analysis
 
-## The move
+```bash
+python3 "$YT_SKILL_DIR/funnel.py" shorts.csv --format shorts
+```
 
-1. Get impressions, CTR, average view duration and runtime - or the exported CSV.
-2. Run `funnel.py`. It computes average-percentage-viewed, finds the binding constraint, and names it.
-3. Act on **only** the binding constraint:
-   - **IMPRESSIONS low** -> topic/packaging problem upstream. The video is not being offered. Rethink
-     the idea's reach with **/yt-idea**, not the title.
-   - **CTR low** -> the title/thumbnail pairing is the leak. Run **/yt-package** and **/yt-thumbnail**.
-   - **RETENTION low** -> the video itself leaks. Run **/yt-retention** on the curve.
-4. If nothing is below its band, the job is not to fix - it is to make more of this one. Say that.
+Use the Shorts mode to keep the long-form funnel heuristic out of the report. Assess available
+**shown in feed**, **stayed to watch / viewed versus swiped away**, **engaged views**, average view
+duration, average percentage viewed, retention curve, and repeat viewing. Note which metrics are
+missing and each denominator. Distinguish raw Shorts starts/replays from engaged views; do not
+compare raw view totals across a metric-definition change without accounting for it.
 
-## The honest part
-
-The bands (CTR ~4-6%, ~50%+ average viewed) are rules of thumb, not your channel. They move hard by
-niche, length and traffic source. Read the binding constraint as "look here first", never as a grade,
-and never invent a benchmark the user did not give you.
+If feed exposure is limited, gather more evidence before blaming SEO or posting frequency. If
+viewers swipe away early, inspect the first frame and opening promise. If they stay but leave
+before the payoff, inspect pacing and payoff timing. Loops can produce percentage viewed above
+100%; this is not automatically an error. Search/Browse packaging may matter for those surfaces,
+but is not an explanation for Shorts-feed performance by itself.
 
 ## What to hand back
 
-- the funnel, link by link, with the binding constraint named
-- the one skill to run next, not five
-- if many videos: the two that beat the channel and the one axis they share
+- A compact metric table with format, source, date range, sample size, and missing inputs.
+- The best-supported hypothesis, evidence for it, and important alternative explanations.
+- One practical experiment and what metric would support or reject it.
+- For a batch, compare like-for-like cohorts rather than ranking by lifetime views alone.
 
-## The gate
-
-This diagnoses; it does not change your channel and it does not publish. The last line is the
-question: **fix the one link, or make more of what already works?**
+Use a channel-specific baseline when available. Built-in CTR/APV thresholds are illustrative;
+never promise that the suggested change will increase distribution or guarantee views.

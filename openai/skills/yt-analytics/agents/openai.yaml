@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Analytics"
+  short_description: "Diagnose Shorts and long-form performance"
+  default_prompt: "Use $yt-analytics to analyze my YouTube Studio export and suggest one evidence-based experiment."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Channel Conversion"
+  short_description: "Improve channel page and subscriber journey"
+  default_prompt: "Use $yt-funnel to review my channel page and draft a clearer trailer and description."
+
+policy:
+  allow_implicit_invocation: true

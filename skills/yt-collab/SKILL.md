@@ -9,16 +9,19 @@ description: >-
 
 # yt-collab
 
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
 The fastest borrowed audience on YouTube is a collab with a channel one size band up that shares your
 viewer but not your exact topic. This finds those channels and writes the pitch that does not get
 ignored.
 
-It reads public listings, the same as **/yt-viral** - it never logs in as anyone and never touches
-credentials. Pair the two: /yt-viral finds who is working, this decides who is reachable and why.
+It reads public listings, the same as [/youtube-agent-pro:yt-viral](../yt-viral/SKILL.md) - it never logs in as anyone and never touches
+credentials. Pair the two: /youtube-agent-pro:yt-viral finds who is working, this decides who is reachable and why.
 
 ## Before you reach out
 
-1. Read `~/.claude/youtube/voice.md` - the pitch is in the creator's voice, and it has to name what
+1. Use the available voice profile or creator context (see the operating guide) - the pitch is in the creator's voice, and it has to name what
    *they* bring, not just what they want.
 2. Be honest about size. A channel 50x bigger is not a collab, it is a favour you have not earned. The
    reachable band is roughly 0.3x to 3x your own median views.
@@ -36,7 +39,7 @@ credentials. Pair the two: /yt-viral finds who is working, this decides who is r
 ## The pitch
 
 Write it short and specific:
-1. One line proving you actually watch them - a specific video, not flattery.
+1. Reference one specific video you actually inspected. Do not pretend to be a longtime viewer.
 2. The overlap, named - why your viewer is their viewer.
 3. The concrete format - not "let's collab" but "I film a 10-minute X, you do the Y half, we both
    publish our cut". Give them something to say yes to.
@@ -48,8 +51,3 @@ Write it short and specific:
 - the pitch, ready to send, in the creator's voice
 - two collab formats that fit (guest segment, split video, response video)
 - one line: who to pitch first, and the one video of theirs to reference
-
-## The gate
-
-This finds and drafts; it does not contact anyone. The last line is the question: **send the first
-pitch, or widen the list?**

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "youtube-agent-pro-openai",
+  "version": "1.0.0",
+  "description": "24 YouTube skills and 11 local analysis tools for ChatGPT and Codex: ideas, scripts, packaging, Shorts, retention, channel planning and sponsorship drafts.",
+  "author": { "name": "Ahmed Sakri" },
+  "homepage": "https://github.com/ahmedsakri/youtube-agent-pro",
+  "repository": "https://github.com/ahmedsakri/youtube-agent-pro",
+  "license": "MIT",
+  "keywords": ["youtube", "codex", "chatgpt", "skills", "shorts", "analytics", "creator"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "YouTube Agent Pro",
+        "shortDescription": "Plan videos, improve packaging and read analytics",
+        "longDescription": "A creator workflow pack with 24 focused skills and 11 dependency-free Python helpers. Work from your transcripts and exports, produce ready-to-use drafts, and distinguish measured results from heuristic suggestions. No bundled account connection or uploader.",
+        "developerName": "Ahmed Sakri",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Plan my next YouTube video from this idea and audience.",
+          "Analyze this Shorts export and identify what evidence we need next.",
+          "Turn this transcript into standalone Shorts with timecodes."
+        ]
+      }
+    }
+  }
+}

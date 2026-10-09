@@ -10,32 +10,36 @@ description: >-
 
 # yt-idea
 
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
 Ideas are cheap. Ideas shaped so somebody clicks them are not. This gets from a niche to a scored
 shortlist without you shooting the wrong one.
 
 A tool lives here and it runs. Use it; do not eyeball the idea.
 
 ```bash
-python3 ideascore.py ideas.txt           # rank a batch
-python3 ideascore.py --idea "one line"   # score a single one
+python3 "$YT_SKILL_DIR/ideascore.py" ideas.txt           # rank a batch
+python3 "$YT_SKILL_DIR/ideascore.py" --idea "one line"   # score a single one
 ```
 
 ## Before you write
 
-1. Read `~/.claude/youtube/voice.md` - who the one viewer is, what the channel will not claim. An
+1. Use the available voice profile or creator context (see the operating guide) - who the one viewer is, what the channel will not claim. An
    idea for the wrong audience scores well here and dies on upload.
 2. Never invent demand. This skill shapes an idea; it does not know your market. Pair it with
-   **/yt-viral**, which reads what is actually working, before you commit a month to a theme.
+   [/youtube-agent-pro:yt-viral](../yt-viral/SKILL.md), which reads what is actually working, before you commit a month to a theme.
 
 ## The move
 
 1. **Widen, then narrow.** From the niche, write 15 raw ideas fast - do not filter yet. Pull from:
-   the creator's own comments (the questions people already ask), **/yt-viral** outliers in the
+   the creator's own comments (the questions people already ask), [/youtube-agent-pro:yt-viral](../yt-viral/SKILL.md) outliers in the
    niche, the beginner mistakes in the topic, and the "X vs Y" the audience argues about.
 2. **Score all 15** through `ideascore.py`. It rates each on SEARCH, SPECIFIC, REACH and DURABLE and
    flags the weakest axis.
-3. **Fix the top 5**, not the top 1. Rewrite each to lift its weakest axis - a 56 that becomes a 74
-   with one number added is worth more than the idea that was already a 74.
+3. **Refine the strongest candidates.** Improve each idea's weakest useful dimension without adding
+   unsupported numbers merely to increase its heuristic score. The score is not measured demand or
+   a calibrated prediction of performance.
 4. **Label the mix.** Mark each as evergreen or timely. A schedule that is all timely has no library;
    all evergreen and the channel never rides a wave. Aim roughly 3 evergreen to 1 timely.
 
@@ -45,8 +49,3 @@ python3 ideascore.py --idea "one line"   # score a single one
 - for each: the one query a real person types to find it
 - the evergreen / timely label on each
 - one line: which to shoot first, and why that one now
-
-## The gate
-
-This writes ideas, it does not pick for you and it does not publish. The last line of every run is
-the question: **which one are you shooting first?**

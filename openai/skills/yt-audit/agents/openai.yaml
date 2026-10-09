@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Channel Audit"
+  short_description: "Review channel strengths and priority fixes"
+  default_prompt: "Use $yt-audit to audit my channel and prioritize the most useful improvement."
+
+policy:
+  allow_implicit_invocation: true

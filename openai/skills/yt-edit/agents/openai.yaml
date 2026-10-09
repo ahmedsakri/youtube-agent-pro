@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Edit Decisions"
+  short_description: "Find transcript cuts, pauses, and retakes"
+  default_prompt: "Use $yt-edit to identify dead air and retakes in this timestamped transcript."
+
+policy:
+  allow_implicit_invocation: true

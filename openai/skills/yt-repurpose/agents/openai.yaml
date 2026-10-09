@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Content Repurposing"
+  short_description: "Adapt videos into platform-specific drafts"
+  default_prompt: "Use $yt-repurpose to repurpose this transcript for the platforms I selected."
+
+policy:
+  allow_implicit_invocation: true

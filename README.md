@@ -1,179 +1,169 @@
-# YouTube Agent Pro - Claude Code Plugin for YouTube Creators
-
-> A **Claude Code plugin** and **AI agent skill pack** for YouTube: idea research, scripts, hooks,
-> titles, thumbnails, SEO, retention analysis, Shorts, repurposing, and sponsorship pricing.
+# YouTube Agent Pro - Claude, ChatGPT & Codex
 
 [![CI](https://github.com/ahmedsakri/youtube-agent-pro/actions/workflows/ci.yml/badge.svg)](https://github.com/ahmedsakri/youtube-agent-pro/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-8A2BE2.svg)](https://claude.com/claude-code)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-![Skills](https://img.shields.io/badge/skills-24-informational.svg)
-![Tools](https://img.shields.io/badge/tools-11-informational.svg)
-![Dependencies](https://img.shields.io/badge/dependencies-none-success.svg)
 
-**Twenty-four Claude skills and eleven tools that run a YouTube channel end to end.** Free, MIT, no
-signup, no API key, nothing to connect. Install it as a Claude Code marketplace in two lines.
+**One repository. 24 YouTube creator workflows per edition. 11 local Python tools.**
 
-The pack includes a **YouTube idea engine** that scores a topic before you film it, a **thumbnail
-concept linter**, a **retention and funnel diagnoser** that finds the one number holding a video back,
-a **cross-platform repurposer** (Shorts, X/Twitter, LinkedIn, newsletter, blog), **series and
-playlist architecture**, a **sponsorship rate card** built from your own view numbers, collab
-outreach, channel-page conversion, a seasonal **content calendar**, a voiceprint that writes your
-`voice.md` from your own transcripts, production briefs, and end-screen routing - plus a hub skill
-that routes a vague request to the right one.
+Plan YouTube Shorts and long-form videos, write scripts and hooks, improve titles and thumbnail
+concepts, draft accurate SEO descriptions, and analyze your own YouTube Analytics exports.
+Choose the Claude or OpenAI edition below; each has instructions written for its host.
 
-**Nothing gets published until you do it.** These skills write. You upload. Every single one ends in
-a block you copy and the same question: **ship it, or change it?**
+Free, MIT-licensed code. The Python tools need no API key or runtime packages. Your AI provider's
+plan and available tools still apply. This pack creates drafts, plans and analysis; it does not
+include a YouTube uploader, scheduling service, account connection or video renderer.
 
-> **New here? Read the [interactive setup guide (PDF)](docs/YouTube-Agent-Pro-Setup-Guide.pdf).**
-> A 16-page, step-by-step walkthrough: install, teach it your voice, and run your first video end to
-> end. Fully interactive: a clickable table of contents, and every skill and tool deep-links to its
-> file on GitHub.
+[Claude PDF guide](docs/guides/YouTube-Agent-Pro-Claude.pdf) ·
+[ChatGPT & Codex PDF guide](docs/guides/YouTube-Agent-Pro-OpenAI.pdf) ·
+[Download release files](https://github.com/ahmedsakri/youtube-agent-pro/releases/latest)
 
-## Install as a marketplace
+## Choose your edition
 
-This repo is a Claude Code plugin marketplace. Two lines in Claude Code and you have all 24 skills:
+| Use it in | Location | How to ask |
+| --- | --- | --- |
+| Claude Code plugin | Root `skills/` and `.claude-plugin/` | `/youtube-agent-pro:yt` or `/youtube-agent-pro:yt-seo` |
+| Claude Code, manually installed skills | Root `skills/` | `/yt` or `/yt-seo` |
+| OpenAI Codex | [`openai/`](openai/README.md) | `$yt` or `$yt-seo` |
+| ChatGPT | [OpenAI instructions and workflow files](openai/chatgpt/README.md) | Ask naturally; use `@` for installed skills where supported |
 
-```
+### Claude Code
+
+In Claude Code:
+
+```text
 /plugin marketplace add ahmedsakri/youtube-agent-pro
-/plugin install youtube-agent-pro
+/plugin install youtube-agent-pro@youtube-agent-pro
+/youtube-agent-pro:yt
 ```
 
-The first line registers this repo as a marketplace; the second installs the plugin from it. A
-marketplace in Claude Code is just a git repo with a `.claude-plugin/marketplace.json`, which this one
-has, so there is nothing central to sign up for. To update later: `/plugin marketplace update
-youtube-agent-pro`.
+Update the registered marketplace with `/plugin marketplace update youtube-agent-pro`.
+Plugin skills use the plugin namespace. If you prefer manual installation, copy **all** root
+`skills/yt*` folders into `~/.claude/skills/` or a project's `.claude/skills/`; those use `/yt`,
+`/yt-script`, and so on. Check for existing names before copying. Use one route to avoid duplicates.
 
-## Other ways to install
+### OpenAI Codex
 
-Copy the skills in by hand (global, every project):
+With Python 3.9 or later:
 
 ```bash
 git clone https://github.com/ahmedsakri/youtube-agent-pro.git
-cp -r youtube-agent-pro/skills/yt* ~/.claude/skills/
+cd youtube-agent-pro/openai
+python3 scripts/install.py --dry-run
+python3 scripts/install.py
 ```
 
-Project-local instead: copy the same folders into your repo's `.claude/skills/`. No Claude Code at
-all? Paste any single `SKILL.md` at the top of a chat and it runs as a mode - you lose the Python
-tools, which is most of the point of the scored ones, but the reasoning still works.
+Start a new Codex conversation and try:
 
-Then **run `/yt-voice` first.** It builds `~/.claude/youtube/voice.md` from three of your own
-transcripts - the one file every other skill reads. Ten minutes there beats any prompt you will ever
-write, because on YouTube you say the words out loud and a script in the wrong voice is unreadable on
-camera.
+```text
+Use $yt-script to turn this outline into a 45-second English Short.
+Use $yt-seo to write accurate title options and a unique description for this transcript.
+Use $yt-analytics to review this export and explain what the numbers cannot establish.
+```
 
-## The twenty-four skills
+The installer keeps all 24 skills together in `~/.agents/skills`, including their shared resources.
+It refuses conflicts; an intentional update with `--force` first makes backups. A project-specific
+destination and an alternative native plugin route are documented in the [OpenAI edition](openai/README.md).
 
-**Start here**
+### ChatGPT
 
-| command | what it does |
+Download `ChatGPT-INSTRUCTIONS.md` and `ChatGPT-WORKFLOWS.md` from the
+[latest release](https://github.com/ahmedsakri/youtube-agent-pro/releases/latest). Add the instructions
+to a conversation or project, attach the workflows and your source material, then ask for a result.
+For computed scores, use the optional ChatGPT ZIP with a mode that can extract and execute Python.
+Without execution, request a qualitative review. See [complete setup and capability limits](openai/chatgpt/README.md).
+
+## The 24 workflows
+
+Use the name below with your edition's invocation syntax, such as `/youtube-agent-pro:yt-script`
+in the Claude plugin or `$yt-script` in Codex.
+
+| Workflow | What you get |
 | --- | --- |
-| `/yt` | The hub. Routes a vague request to the right skill, or runs a whole video in order. |
-| `/yt-voice` | Builds your `voice.md` from your own transcripts, measured not guessed. Run this first. |
+| `yt` | Route a request or develop a complete video production package |
+| `yt-voice` | An optional creator voice profile based on supplied transcripts |
+| `yt-idea` | Relevant ideas and transparent heuristic comparisons |
+| `yt-script` | Hooks, spoken scripts and retention beats |
+| `yt-brief` | Shot lists, framing, graphics and production notes |
+| `yt-edit` | Transcript-based edit decisions and dead-air suggestions |
+| `yt-chapters` | Chapters checked for timestamp and formatting rules |
+| `yt-package` | Accurate title and thumbnail-text pairings |
+| `yt-thumbnail` | Visual concepts and a concept-level checklist |
+| `yt-seo` | Video-specific descriptions, natural keywords and relevant tags |
+| `yt-analytics` | Export analysis with missing evidence clearly identified |
+| `yt-retention` | Retention curves, timecoded drops and testable editing ideas |
+| `yt-funnel` | Channel page and subscriber-conversion review |
+| `yt-audit` | A prioritized channel review grounded in supplied evidence |
+| `yt-viral` | Public examples compared with each channel's own baseline |
+| `yt-trend` | Sourced trend research and seasonal planning |
+| `yt-series` | Series structure, playlist order and next-video connections |
+| `yt-collab` | Audience-fit research and draft collaboration pitches |
+| `yt-endscreen` | End-screen and card plans for eligible formats |
+| `yt-shorts` | Standalone clip plans and new openings from supplied material |
+| `yt-repurpose` | Platform-specific drafts from one source video |
+| `yt-plan` | A calendar matched to your cadence, capacity and time zone |
+| `yt-sponsor` | Illustrative rate scenarios, pitches and integration drafts |
+| `yt-comment` | Comment triage, reply drafts and pin suggestions |
 
-**Make the video**
+## YouTube SEO, with realistic expectations
 
-| command | what it does |
-| --- | --- |
-| `/yt-idea` | A niche into scored ideas - searchable, specific, bigger than the channel - before you film the wrong one. |
-| `/yt-script` | One idea into a script. Five hooks off [21 formulas](skills/yt-script/hooks.json), scored, then the spoken script with the retention beats marked. |
-| `/yt-brief` | A script into a shot list: framing, b-roll, on-screen graphics, gear, runtime budget. |
-| `/yt-chapters` | Chapters from a transcript, validated against YouTube's own rules so they render. |
+Both editions ground titles and descriptions in the actual video, use one or two main topic terms
+naturally, and write distinct descriptions for each upload. Tags have a limited role, especially for
+misspellings; relevant hashtags remain optional. Shorts description URLs are not clickable, so
+calls to action must match the destination available to viewers. These rules are based on
+[YouTube's current metadata guidance](skills/yt-seo/references/youtube-metadata.md).
 
-**Package it**
+Search relevance and Shorts-feed recommendations are different. Low views alone cannot identify an
+SEO problem, and no keyword list, thumbnail or posting time guarantees reach. The analytics workflow
+distinguishes evidence from hypotheses and avoids applying long-form CTR rules to Shorts-feed views.
 
-| command | what it does |
-| --- | --- |
-| `/yt-package` | Title and thumbnail text as one pairing, linted for truncation, duplication and vagueness. |
-| `/yt-thumbnail` | The thumbnail as a concept - one focal idea, three elements, three words - linted and A/B'd before you open an editor. |
-| `/yt-seo` | The description, the tags worth having, and the three queries this should win. |
+## Local tools and creator context
 
-**Read the numbers**
+The 11 Python helpers cover idea and hook scoring, title and thumbnail-concept checks, funnel and
+retention analysis, edit intervals, chapters, public-video comparisons, sponsorship scenarios and
+transcript voice measurements. They operate on supplied data and make no network requests.
 
-| command | what it does |
-| --- | --- |
-| `/yt-analytics` | A Studio export read as a funnel - impressions, CTR, retention - to name the one number to fix. |
-| `/yt-retention` | Your retention curve read properly: the hook leak, the cliffs, the slide, and what to change. |
-| `/yt-funnel` | The channel page and subscriber conversion - trailer, above-the-fold, sections, the video that converts. |
-| `/yt-audit` | The whole channel, ending in ONE fix rather than twenty. |
-
-**Grow it**
-
-| command | what it does |
-| --- | --- |
-| `/yt-viral` | What is working in your niche, ranked by multiple over each channel's own median - not by channel size. |
-| `/yt-trend` | A 90-day calendar: seasonal demand, the evergreen/timely mix, the reserved reaction slot. |
-| `/yt-series` | A multi-video series or playlist as an architecture - a binge order, each video earning the next click. |
-| `/yt-collab` | The right channels to collaborate with, by audience overlap and size band, plus the pitch that gets a reply. |
-| `/yt-endscreen` | End screens and cards placed to keep the session going, read off the retention curve. |
-
-**Multiply it**
-
-| command | what it does |
-| --- | --- |
-| `/yt-shorts` | The Shorts already inside a long video, with a new first line written for each. |
-| `/yt-repurpose` | One long video into a thread, a LinkedIn post, a newsletter section and a blog outline - rewritten, not pasted. |
-| `/yt-plan` | A week that fits the hours you actually have. One anchor, one cheap one, three Shorts. |
-
-**Run it like a business**
-
-| command | what it does |
-| --- | --- |
-| `/yt-sponsor` | A defensible rate card from your own views, the reply to the brand, and an integration that does not tank retention. |
-| `/yt-comment` | The comment section triaged into piles, then replies in your voice. Says which one to pin. |
-
-## The eleven tools
-
-Every one runs on a clean Python 3 with no dependencies. They are the reason these are skills and not
-just prompts.
+From the repository root, for example:
 
 ```bash
-python3 skills/yt-idea/ideascore.py --idea "..."                  # score an idea on 4 axes
-python3 skills/yt-script/hookscore.py --hook "one line"           # 5-property hook panel
-python3 skills/yt-package/title.py --title "..." --thumb "..."    # title + thumbnail linter
-python3 skills/yt-thumbnail/thumblint.py --concept "..." --title "..."  # thumbnail concept linter
-python3 skills/yt-analytics/funnel.py --impressions 42000 --ctr 3.1 --avd 2:10 --length 9:40  # the binding constraint
-python3 skills/yt-retention/retention.py retention.csv            # where they left, and why
-python3 skills/yt-edit/deadair.py transcript.srt                  # edit decision list
-python3 skills/yt-chapters/chapters.py transcript.srt            # validated chapters
-python3 skills/yt-viral/swipe.py collected.json --min 2.0        # outliers by own-channel multiple
-python3 skills/yt-sponsor/ratecard.py --views 12000 --niche tech # sponsorship rate band
-python3 skills/yt-voice/voiceprint.py best-video.txt            # measure how you actually talk
+python3 skills/yt-package/title.py --title "Three Phone Cameras, One Dark Room" --thumb "WHICH WINS?" --json
+python3 skills/yt-analytics/funnel.py --format shorts --avd 12 --length 30 --json
+python3 skills/yt-retention/retention.py --help
 ```
 
-Every tool takes `--json` for piping, reads a file or a flag, and never phones home.
+Scores are editing aids, not predictions. Text heuristics are English-oriented; sponsorship bands
+are illustrative USD assumptions. Use your language, audience data and verified deal terms to guide
+decisions. A thumbnail concept is not a rendered image, and clip selection does not establish
+permission to reuse the source footage.
 
-## The fine print
+Voice setup is optional. Supplied context comes first; Claude's default profile is
+`~/.claude/youtube/voice.md`, while Codex uses a workspace `.youtube-agent/voice.md` when present.
+ChatGPT uses attached profiles or conversation context. Keep private exports, credentials and
+profiles out of this public repository.
 
-The part most packs leave out.
+## Verification and maintenance
 
-**It does not publish.** YouTube's Data API would allow it with your own OAuth. It is deliberately not
-built here: every skill ends in a block you copy and a question - ship it, or change it? Anything that
-claims to run your channel unattended should be read with that distinction in mind.
+The editions share byte-identical Python helpers, checked by the repository validator. Regression
+tests cover installation, packaging, missing data, CSV columns, retention axes, overlapping edits,
+and execution from unrelated folders with spaces. See the [verification report](openai/docs/VALIDATION.md)
+and [adaptation notes](openai/docs/PORTING_NOTES.md) for evidence and limits.
 
-**The scorers are heuristics, not predictors.** `hookscore.py`, `ideascore.py`, `thumblint.py` and
-`funnel.py` read the *words and the structure* of what you give them, not the market and not the
-result. A low score is a reason to look again; a high score is not a promise. `hookscore.py` in
-particular was calibrated against 74 real short-form hooks and separates deliberately bad hooks from
-real ones well - and a creator's own hits from their own misses barely at all.
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r openai/requirements-dev.txt
+.venv/bin/python scripts/validate_repo.py
+.venv/bin/python openai/scripts/validate.py
+.venv/bin/python -m unittest discover -s openai/tests -v
+.venv/bin/python openai/scripts/build_release.py
+```
 
-**`ratecard.py` gives negotiation anchors, not a quote.** The CPM bands are widely cited industry
-ranges. Real deals move on geography, engagement, exclusivity and usage rights.
+CI runs on Python 3.9 and 3.12. PDF sources and rebuild instructions are in
+[`docs/guides/`](docs/guides/README.md). This repository distributes community skills; publishing it
+does not register a plugin in OpenAI's public directory or grant access to a YouTube account.
 
-**`/yt-viral` and `/yt-collab` read, they do not scrape.** Public listings only. They never log in as
-you and never touch your credentials.
+Contributions go through a pull request; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-**Nothing invents a number.** If a skill wants a figure it does not have, it asks you for it or writes
-the line without it.
+## License
 
-## Licence
-
-MIT. Use it, change it, ship it. See [LICENSE](LICENSE).
-
-## Keywords
-
-YouTube automation, YouTube AI agent, Claude Code plugin, Claude Code skills, Claude skills for
-YouTube, YouTube SEO, YouTube growth, video script generator, YouTube hook formulas, thumbnail
-optimizer, title and thumbnail A/B testing, YouTube retention analysis, audience retention,
-click-through rate (CTR), YouTube analytics, Shorts generator, content repurposing, creator tools,
-sponsorship rate card, YouTube content calendar, AI content creation, Anthropic Claude, agent skills.
+[MIT](LICENSE). Maintained by Ahmed Sakri. Preserve the included copyright and permission notices
+when redistributing. This is an independent project, not affiliated with YouTube, Anthropic or OpenAI.

@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Retention Analysis"
+  short_description: "Find audience drop-offs and pacing hypotheses"
+  default_prompt: "Use $yt-retention to analyze this retention export alongside its transcript."
+
+policy:
+  allow_implicit_invocation: true

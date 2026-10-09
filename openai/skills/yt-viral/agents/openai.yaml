@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Outlier Research"
+  short_description: "Compare verified niche video outliers"
+  default_prompt: "Use $yt-viral to research comparable niche videos and explain their outlier patterns."
+
+policy:
+  allow_implicit_invocation: true

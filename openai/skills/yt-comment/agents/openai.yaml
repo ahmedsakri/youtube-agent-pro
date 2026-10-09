@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Comment Replies"
+  short_description: "Triage comments and draft useful replies"
+  default_prompt: "Use $yt-comment to triage these comments and draft replies in my voice."
+
+policy:
+  allow_implicit_invocation: true

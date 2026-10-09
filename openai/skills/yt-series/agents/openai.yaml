@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Series Planner"
+  short_description: "Design connected videos and playlist order"
+  default_prompt: "Use $yt-series to plan a series with standalone episodes and meaningful next steps."
+
+policy:
+  allow_implicit_invocation: true

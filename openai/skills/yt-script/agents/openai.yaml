@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Script Writer"
+  short_description: "Write hooks and scripts with visual beats"
+  default_prompt: "Use $yt-script to write a script with strong hook options and on-screen beats."
+
+policy:
+  allow_implicit_invocation: true

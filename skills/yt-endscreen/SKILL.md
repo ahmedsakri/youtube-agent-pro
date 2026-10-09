@@ -10,18 +10,22 @@ description: >-
 
 # yt-endscreen
 
-The end screen is the difference between a view and a session, and a session is what the algorithm
-actually rewards. Most creators point it at their newest video out of habit. This points it at the one
-that keeps the viewer watching, at the second they are still there to see it.
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
 
-Pair it with **/yt-retention** - the retention curve says where the viewer still is at the end, and
+An end screen can guide viewers to a relevant next video. Choose by continuity and observed
+viewer behavior rather than assuming the newest upload is best. Verify current feature eligibility
+before giving implementation steps. Shorts need a Shorts-appropriate related-video or spoken CTA
+plan; do not assume long-form end screens/cards are available in the Shorts feed.
+
+Pair it with [/youtube-agent-pro:yt-retention](../yt-retention/SKILL.md) - the retention curve says where the viewer still is at the end, and
 whether a card mid-video would catch a leak or cause one.
 
 ## Before you place
 
-1. Read `~/.claude/youtube/voice.md` for the close - the end screen has a spoken hand-off, and "one
-   ask, not three" is the rule from **/yt-script** applied here too.
-2. If there is a retention export, read it first (**/yt-retention**). The end-screen timing is only as
+1. Use the available voice profile or creator context (see the operating guide) for the close - the end screen has a spoken hand-off, and "one
+   ask, not three" is the rule from [/youtube-agent-pro:yt-script](../yt-script/SKILL.md) applied here too.
+2. If there is a retention export, read it first ([/youtube-agent-pro:yt-retention](../yt-retention/SKILL.md)). The end-screen timing is only as
    good as knowing how many viewers are left to see it.
 
 ## The rules
@@ -53,8 +57,3 @@ whether a card mid-video would catch a leak or cause one.
 - the end-screen layout (video + subscribe), and the seconds to place it
 - the card placements (timecode + target), or "none - no leak worth a card"
 - one line: the single routing change most likely to lift session time
-
-## The gate
-
-This plans the routing; it does not edit the video or touch Studio. The last line is the question:
-**set the end screen to this, or hold more back first so it earns the click?**

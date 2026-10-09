@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Sponsorship Drafts"
+  short_description: "Model deal assumptions and draft integrations"
+  default_prompt: "Use $yt-sponsor to prepare a clearly labeled sponsorship estimate and reply draft."
+
+policy:
+  allow_implicit_invocation: true
