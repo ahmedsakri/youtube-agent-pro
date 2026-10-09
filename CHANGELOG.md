@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Add Claude Code **agents** support: a top-level `agents/` directory, with the convention documented
+  and `scripts/validate_repo.py` extended to validate agent files (frontmatter, name, links).
+- Ship 5 specialist subagents that orchestrate the existing skills: `yt-producer`, `yt-strategist`,
+  `yt-packager`, `yt-analyst` and `yt-editor`.
+
 ## 2.1.0 — 2026-10-09
 
 - Keep Claude and OpenAI editions in one repository, with explicit commands for each host.
