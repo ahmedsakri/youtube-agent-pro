@@ -28,13 +28,23 @@ def main():
         check(isinstance(meta, dict) and meta.get("name") == path.parent.name, "Skill name mismatch: " + str(path))
         check(isinstance(meta, dict) and isinstance(meta.get("description"), str), "Missing description: " + str(path))
         check("$yt" not in text and ".youtube-agent/voice.md" not in text, "OpenAI-only instructions in Claude skill: " + str(path))
+    agents = sorted(p for p in (ROOT / "agents").glob("*.md") if p.name != "README.md")
+    for path in agents:
+        text = path.read_text(encoding="utf-8")
+        parts = text.split("---", 2)
+        check(text.startswith("---\n") and len(parts) == 3, "Missing frontmatter: " + str(path))
+        if len(parts) != 3:
+            continue
+        meta = yaml.safe_load(parts[1])
+        check(isinstance(meta, dict) and meta.get("name") == path.stem, "Agent name mismatch: " + str(path))
+        check(isinstance(meta, dict) and isinstance(meta.get("description"), str), "Missing description: " + str(path))
     helpers = sorted((ROOT / "skills").glob("*/*.py"))
     check(len(helpers) == 11, "Expected 11 Claude helpers")
     for path in helpers + [ROOT / "skills/yt-script/hooks.json", ROOT / "skills/yt-seo/references/youtube-metadata.md"]:
         check(path.read_bytes() == (ROOT / "openai" / path.relative_to(ROOT)).read_bytes(), "Edition data/helper drift: " + str(path))
     check((ROOT / "LICENSE").read_bytes() == (ROOT / "openai/LICENSE").read_bytes(), "License drift")
     check((ROOT / "templates/voice.md").read_bytes() == (ROOT / "skills/yt-voice/assets/voice.md").read_bytes(), "Legacy voice template drift")
-    pages = list((ROOT / "skills").rglob("*.md")) + [ROOT / "README.md"] + list((ROOT / "docs").rglob("*.md"))
+    pages = list((ROOT / "skills").rglob("*.md")) + [ROOT / "README.md"] + list((ROOT / "docs").rglob("*.md")) + list((ROOT / "agents").glob("*.md"))
     for path in pages:
         for link in re.findall(r"\]\(([^\s)]+)\)", path.read_text(encoding="utf-8")):
             if link.startswith(("https://", "http://", "#", "mailto:")):
@@ -55,7 +65,7 @@ def main():
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
-    print("Validated Claude skills, 11 identical helpers, shared resources, both catalogs, PDFs and repository links.")
+    print("Validated Claude skills, {} agents, 11 identical helpers, shared resources, both catalogs, PDFs and repository links.".format(len(agents)))
     return 0
 
 
