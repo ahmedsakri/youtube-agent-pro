@@ -1,17 +1,33 @@
-# YouTube Agent Pro
+# YouTube Agent Pro - Claude Code Plugin for YouTube Creators
+
+> A **Claude Code plugin** and **AI agent skill pack** for YouTube: idea research, scripts, hooks,
+> titles, thumbnails, SEO, retention analysis, Shorts, repurposing, and sponsorship pricing.
+
+[![CI](https://github.com/ahmedsakri/youtube-agent-pro/actions/workflows/ci.yml/badge.svg)](https://github.com/ahmedsakri/youtube-agent-pro/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-8A2BE2.svg)](https://claude.com/claude-code)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+![Skills](https://img.shields.io/badge/skills-24-informational.svg)
+![Tools](https://img.shields.io/badge/tools-11-informational.svg)
+![Dependencies](https://img.shields.io/badge/dependencies-none-success.svg)
 
 **Twenty-four Claude skills and eleven tools that run a YouTube channel end to end.** Free, MIT, no
-signup, no API key, nothing to connect.
+signup, no API key, nothing to connect. Install it as a Claude Code marketplace in two lines.
 
-The pack includes an idea engine that scores a topic before you film it, a thumbnail concept linter,
-a funnel diagnoser that finds the number holding a video back, a cross-platform repurposer, series
-architecture, a sponsorship rate
-card built from your own view numbers, collab outreach, channel-page conversion, a seasonal trend
-calendar, a voiceprint that writes your `voice.md` from your own transcripts, production briefs, and
-end-screen routing - plus a hub skill that routes a vague request to the right one.
+The pack includes a **YouTube idea engine** that scores a topic before you film it, a **thumbnail
+concept linter**, a **retention and funnel diagnoser** that finds the one number holding a video back,
+a **cross-platform repurposer** (Shorts, X/Twitter, LinkedIn, newsletter, blog), **series and
+playlist architecture**, a **sponsorship rate card** built from your own view numbers, collab
+outreach, channel-page conversion, a seasonal **content calendar**, a voiceprint that writes your
+`voice.md` from your own transcripts, production briefs, and end-screen routing - plus a hub skill
+that routes a vague request to the right one.
 
 **Nothing gets published until you do it.** These skills write. You upload. Every single one ends in
 a block you copy and the same question: **ship it, or change it?**
+
+> **New here? Read the [interactive setup guide (PDF)](docs/YouTube-Agent-Pro-Setup-Guide.pdf).**
+> A 15-page, step-by-step walkthrough: install, teach it your voice, and run your first video end to
+> end, with clickable links throughout.
 
 ## Install as a marketplace
 
@@ -152,3 +168,11 @@ the line without it.
 ## Licence
 
 MIT. Use it, change it, ship it. See [LICENSE](LICENSE).
+
+## Keywords
+
+YouTube automation, YouTube AI agent, Claude Code plugin, Claude Code skills, Claude skills for
+YouTube, YouTube SEO, YouTube growth, video script generator, YouTube hook formulas, thumbnail
+optimizer, title and thumbnail A/B testing, YouTube retention analysis, audience retention,
+click-through rate (CTR), YouTube analytics, Shorts generator, content repurposing, creator tools,
+sponsorship rate card, YouTube content calendar, AI content creation, Anthropic Claude, agent skills.
