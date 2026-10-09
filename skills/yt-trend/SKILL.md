@@ -10,20 +10,23 @@ description: >-
 
 # yt-trend
 
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
 Some videos earn for a week and some earn for years, and posting the wrong kind at the wrong time is
 how a good idea dies early. This times the calendar: which weeks reward a timely bet, and when to bank
 evergreen instead.
 
 It does not have a live trends feed. It reasons from the niche's known calendar and pairs with
-**/yt-viral**, which reads what is actually spiking right now. Use both: this plans the shape of the
-year, /yt-viral confirms the week.
+[/youtube-agent-pro:yt-viral](../yt-viral/SKILL.md), which reads what is actually spiking right now. Use both: this plans the shape of the
+year, /youtube-agent-pro:yt-viral confirms the week.
 
 ## Before you plan
 
-1. Read `~/.claude/youtube/voice.md` and the channel's cadence - a trend you cannot film in time is
+1. Use the available voice profile or creator context (see the operating guide) and the channel's cadence - a trend you cannot film in time is
    not an opportunity, it is a regret.
 2. Never claim a trend you have not seen. If the timing rests on a live spike, say "confirm with
-   /yt-viral first" rather than asserting it.
+   /youtube-agent-pro:yt-viral first" rather than asserting it.
 
 ## The two clocks
 
@@ -46,7 +49,7 @@ all timely and there is nothing left the week nothing happens.
 - Map the niche's recurring dated demand for the next 90 days.
 - Slot evergreen anchors on the quiet weeks, timely bets just before each peak.
 - Reserve the reaction slot and name the trigger that would use it.
-- Pair each timely slot with a "confirm with /yt-viral" check before shooting.
+- Pair each timely slot with a "confirm with /youtube-agent-pro:yt-viral" check before shooting.
 
 ## What to hand back
 
@@ -54,8 +57,3 @@ all timely and there is nothing left the week nothing happens.
 - for each timely slot, the publish-before date and the search peak it targets
 - the evergreen/timely ratio of the plan, stated
 - one line: the next dated opportunity and the week to start filming it
-
-## The gate
-
-This plans timing; it does not schedule or publish. The last line is the question: **lock the 90 days,
-or just the next dated bet?**

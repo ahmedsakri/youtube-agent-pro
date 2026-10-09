@@ -9,33 +9,44 @@ description: >-
 
 # yt-retention
 
-The retention graph is the only honest feedback YouTube gives you. Almost nobody exports it.
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
+Read an audience-retention export alongside the video length and, when available, a timestamped
+transcript. A drop suggests a place to inspect; it does not establish why viewers left.
 
 ```bash
-python3 retention.py retention.csv --duration 600
-python3 retention.py retention.csv --transcript transcript.srt
+python3 "$YT_SKILL_DIR/retention.py" retention.csv --duration 600 --axis percent
+python3 "$YT_SKILL_DIR/retention.py" retention.csv --axis seconds --transcript transcript.srt
+python3 "$YT_SKILL_DIR/retention.py" shorts-retention.csv --axis seconds --duration 30 --hook-seconds 3
 ```
 
-Getting the file: Studio -> a video -> Analytics -> Engagement -> the audience-retention chart ->
-the download icon -> "Audience retention".
+`--axis auto` uses column labels to identify seconds, percent, or elapsed-time ratios. For an
+ambiguous unit-less axis, specify `--axis seconds`, `--axis percent`, or `--axis fraction`; percent
+and fraction axes need the actual runtime. Do not guess units from whether the largest value
+happens to be below 100. The helper also recognizes an `audienceWatchRatio` column for retention
+fractions; inspect its diagnostics and make other source units explicit before analysis.
 
-## Three different problems
+Get the audience-retention data from Studio's video Analytics/Engagement export when available;
+if the UI does not offer that export, work from supplied chart data or a clearly labeled manual
+reading. Never fabricate samples from a chart you cannot read.
 
-- **HOOK LEAK** - what is lost in the first 30 seconds. Under 25% is healthy. This is always the
-  first thing to fix and it is always the first fifteen seconds of script, never the edit.
-- **CLIFFS** - single steep drops. A cliff is a moment: a topic change with no signposting, a
-  sponsor read, a long setup. With `--transcript` the tool prints what was being said there, which
-  is what makes the report actionable instead of interesting.
-- **SLIDE** - the steady bleed across the middle. A flat slide is pacing. The fix is cutting, not
-  rewriting.
+## Patterns to inspect
+
+- **Opening loss:** compare the opening window with videos of similar length and format. The
+  helper uses the first 10% of runtime, capped at 30 seconds, when duration is supplied. Set
+  `--hook-seconds` for a different window; for a Short, inspect the first seconds alongside
+  stayed-to-watch data and the opening footage.
+- **Cliffs:** inspect the exact transcript/footage at a sharp drop for topic changes, sponsor reads,
+  slow setup, or an unmet promise. An edit or transition may matter as much as the script.
+- **Gradual decline:** look for repeated material or delayed payoff. Compare against the channel's
+  own curves before calling normal attrition a failure.
+- **Peaks and loops:** a replay or confusing segment can both make a peak. Shorts can exceed 100%
+  viewed; distinguish replay behavior from a causal claim about satisfaction.
 
 ## What to hand back
 
-Name the single biggest leak and one change for it. Not a list of five. Then, only if asked, the
-rest. And if the hook leak is healthy and the slide is flat, say the video is fine and the problem
-is packaging - send them to `/yt-package`.
-
-## The gate
-
-Nothing here publishes. This skill writes and you publish. Every output ends in a block the user
-copies, and the last line of every run is the question: **ship it, or change it?**
+Name the most consequential supported observation, its timecode, and one proposed change.
+Separate measured changes from interpretations. If the curve is healthy, use
+[/youtube-agent-pro:yt-analytics](../yt-analytics/SKILL.md) for other evidence instead of declaring packaging at fault
+from retention alone. Respect requests for a full audit rather than withholding other findings.

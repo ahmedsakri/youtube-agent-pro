@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Creator Voice"
+  short_description: "Build a reusable creator voice profile"
+  default_prompt: "Use $yt-voice to build a voice profile from my own transcripts."
+
+policy:
+  allow_implicit_invocation: true

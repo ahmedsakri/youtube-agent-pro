@@ -1,23 +1,26 @@
 ---
 name: yt-voice
 description: >-
-  Build or refresh the voice.md that every other skill in this pack reads -
-  from the creator's own transcripts, measured not guessed. Use for "set up
+  Build or refresh an optional creator voice profile from their own
+  transcripts and stated audience, vocabulary, and format preferences. Use for "set up
   my voice", "write my voice.md", "make the scripts sound like me", "my
   scripts don't sound like me", or first-time setup of the YouTube pack.
 ---
 
 # yt-voice
 
-Every skill in this pack reads one file: `~/.claude/youtube/voice.md`. It is the highest-leverage ten
-minutes in the whole pack, because on YouTube the words are said out loud and a script in the wrong
-voice is unreadable on camera. This builds that file from how the creator actually talks, not how they
-wish they did.
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
+Build a reusable voice profile from how the creator actually talks. Other skills can use it when
+available, but do not require it before doing useful work. Save to the user's chosen location, or
+`~/.claude/youtube/voice.md`. The canonical template is [assets/voice.md](assets/voice.md),
+which ships with this skill. Use this template for new profiles rather than maintaining a second copy.
 
 A tool lives here and it runs. It measures the things you cannot hear about yourself.
 
 ```bash
-python3 voiceprint.py best-video.txt second.srt third.txt
+python3 "$YT_SKILL_DIR/voiceprint.py" best-video.txt second.srt third.txt
 ```
 
 ## The move
@@ -28,15 +31,16 @@ python3 voiceprint.py best-video.txt second.srt third.txt
 2. **Run `voiceprint.py`** across all of them. It returns mean sentence length, filler rate, the
    signature words they lean on, and the hype words they already use. These are measurements, not
    grades - a long sentence is not worse than a short one, it is just a thing the scripts must respect.
-3. **Fill the six sections** of `templates/voice.md` from the measurements plus a short interview:
+3. **Fill the six sections** of [the voice template](assets/voice.md) from the measurements plus a short interview:
    - *Who I am talking to* - one named person, not "creators".
    - *How I actually talk* - from the mean sentence length and signature words.
    - *Words I never use* - the hype words to ban (the creator chooses from the ones voiceprint found).
    - *Words I do use* - the signature words. Keep them; they are what makes a script sound like them.
    - *What I will not claim* - numbers, results, tools they have not got. The skills refuse these.
    - *My format* - length, on-camera or not, intro or not, whether they swear.
-4. **Write the file** to `~/.claude/youtube/voice.md`. Show it to the creator and have them correct
-   the "who I am talking to" line in particular - that one they must own.
+4. **Write the profile** to the requested path, or `~/.claude/youtube/voice.md`.
+   Preserve an existing profile's useful details and incorporate the requested updates.
+   Mark inferred audience/tone details so the creator can correct them.
 
 ## New channel, no transcripts
 
@@ -46,11 +50,6 @@ after three uploads.
 
 ## What to hand back
 
-- the written `~/.claude/youtube/voice.md`
+- the saved or attachable voice profile, with its actual location if written
 - the voiceprint measurements that informed it
 - one line: the one section to tighten after their next three videos
-
-## The gate
-
-This writes a local config file and nothing else - no publishing, no account access. The last line is
-the question: **save this as your voice.md, or correct the audience line first?**

@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube End Screens"
+  short_description: "Plan relevant next-video recommendations"
+  default_prompt: "Use $yt-endscreen to plan the next-video recommendation and closing hand-off."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Agent Pro"
+  short_description: "Plan and improve YouTube content end to end"
+  default_prompt: "Use $yt to develop a production package for my next YouTube video."
+
+policy:
+  allow_implicit_invocation: true

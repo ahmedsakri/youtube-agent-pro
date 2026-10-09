@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Collaborations"
+  short_description: "Research collaborators and draft pitches"
+  default_prompt: "Use $yt-collab to find relevant collaborators and draft a specific pitch."
+
+policy:
+  allow_implicit_invocation: true

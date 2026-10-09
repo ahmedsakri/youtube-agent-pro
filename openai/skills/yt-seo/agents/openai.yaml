@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Descriptions and SEO"
+  short_description: "Write relevant descriptions and search text"
+  default_prompt: "Use $yt-seo to write an accurate description and relevant tags for this video."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Content Calendar"
+  short_description: "Plan uploads around real production capacity"
+  default_prompt: "Use $yt-plan to plan a content calendar that matches my format and available time."
+
+policy:
+  allow_implicit_invocation: true

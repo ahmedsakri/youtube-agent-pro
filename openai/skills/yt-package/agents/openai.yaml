@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Titles and Packaging"
+  short_description: "Pair clear titles with thumbnail concepts"
+  default_prompt: "Use $yt-package to write title and thumbnail-text options for this video."
+
+policy:
+  allow_implicit_invocation: true

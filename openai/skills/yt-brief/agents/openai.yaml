@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Production Brief"
+  short_description: "Turn scripts into practical production plans"
+  default_prompt: "Use $yt-brief to turn my script into a shot list and realistic production brief."
+
+policy:
+  allow_implicit_invocation: true

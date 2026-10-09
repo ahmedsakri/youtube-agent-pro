@@ -8,15 +8,16 @@ description: >-
 
 # yt-audit
 
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
 An audit that lists twenty problems is a way of avoiding the one that matters. This ends in ONE fix.
 
 ## Before you write
 
-1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
-   on camera, the words they never use, who they are talking to, what they will not claim. If it
-   does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
-   and write the file. A script in the wrong voice is worse than no script, because they have to
-   read it out loud.
+1. Use the creator's supplied voice profile or context, then a local `~/.claude/youtube/voice.md`
+   if available, following the operating guide. If absent, draft in a clear voice using the stated
+   audience and format; do not make voice-profile setup a prerequisite.
 2. Never invent a number, a result or a source. If a figure would strengthen it and you do not have
    one, ask for it or write the line without it.
 
@@ -29,9 +30,10 @@ An audit that lists twenty problems is a way of avoiding the one that matters. T
    that size, that is the fix and nothing else matters yet.
 3. **The first fifteen seconds of the three most recent.** Transcribe them and score with
    `../yt-script/hookscore.py`. This is where most channels lose.
-4. **Upload rhythm.** Not frequency - CONSISTENCY. Six videos in one week and then nothing for a
-   month is worse than one a fortnight forever.
-5. **The retention shape**, if they can export it. `/yt-retention`.
+4. **Upload rhythm and capacity.** Compare formats, publication age, and performance before
+   attributing a result to frequency. A sustainable cadence helps planning, but consistency alone
+   does not establish how YouTube will distribute a video.
+5. **The retention shape**, if they can export it. `/youtube-agent-pro:yt-retention`.
 
 ## What to hand back
 
@@ -41,8 +43,3 @@ An audit that lists twenty problems is a way of avoiding the one that matters. T
 - What NOT to do yet, and why.
 
 Never open an audit with praise you do not mean, and never end one with a list of twenty things.
-
-## The gate
-
-Nothing here publishes. This skill writes and you publish. Every output ends in a block the user
-copies, and the last line of every run is the question: **ship it, or change it?**

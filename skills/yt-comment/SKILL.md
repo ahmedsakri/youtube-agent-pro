@@ -8,16 +8,17 @@ description: >-
 
 # yt-comment
 
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
 The comment section is a retention surface, not a chore. Replies in the first few hours are what
 decide whether a thread becomes a conversation other people read.
 
 ## Before you write
 
-1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
-   on camera, the words they never use, who they are talking to, what they will not claim. If it
-   does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
-   and write the file. A script in the wrong voice is worse than no script, because they have to
-   read it out loud.
+1. Use the creator's supplied voice profile or context, then a local `~/.claude/youtube/voice.md`
+   if available, following the operating guide. If absent, draft in a clear voice using the stated
+   audience and format; do not make voice-profile setup a prerequisite.
 2. Never invent a number, a result or a source. If a figure would strengthen it and you do not have
    one, ask for it or write the line without it.
 
@@ -44,8 +45,3 @@ Sort what the user pastes into four piles and say how many are in each before wr
 
 Say which ONE comment to pin and why. Pin the question the most people also have, not the nicest
 one. Heart generously - it costs nothing and it is visible.
-
-## The gate
-
-Nothing here publishes. This skill writes and you publish. Every output ends in a block the user
-copies, and the last line of every run is the question: **ship it, or change it?**

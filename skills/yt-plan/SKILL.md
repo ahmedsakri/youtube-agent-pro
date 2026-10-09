@@ -9,38 +9,34 @@ description: >-
 
 # yt-plan
 
-A plan that does not fit the week is a list of regrets. Ask two questions before writing anything:
-**how many hours do you actually have**, and **what is already half-made**.
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
+Build around the user's requested cadence, format, timezone, available hours, and material already
+made. Use known context; ask only for missing constraints that change the plan.
 
 ## Before you write
 
-1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
-   on camera, the words they never use, who they are talking to, what they will not claim. If it
-   does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
-   and write the file. A script in the wrong voice is worse than no script, because they have to
-   read it out loud.
+1. Use the creator's supplied voice profile or context, then a local `~/.claude/youtube/voice.md`
+   if available, following the operating guide. If absent, draft in a clear voice using the stated
+   audience and format; do not make voice-profile setup a prerequisite.
 2. Never invent a number, a result or a source. If a figure would strengthen it and you do not have
    one, ask for it or write the line without it.
 
-## The shape of a week
+## Size the plan to the creator
 
-- **One anchor.** The video the week is for. It gets the most time and it goes out on the day the
-  channel's own analytics say is best - ask for that, do not assume Tuesday.
-- **One cheap one.** Built from something that exists: a clip, a reaction, a follow-up to the
-  comment that got the most replies last week.
-- **Shorts from the anchor.** Three, cut from the long video, not written separately. `/yt-shorts`
-  finds them.
+For a mixed-format channel, an anchor video, a lower-effort follow-up, and selected Shorts from
+existing footage can be a useful starting mix. Use [/youtube-agent-pro:yt-shorts](../yt-shorts/SKILL.md) for clip
+plans. For a Shorts-only channel, plan standalone Shorts without requiring a long-form anchor.
+Honor a requested daily or other cadence when capacity supports it; if it does not, name the
+tradeoff instead of silently changing the user's schedule.
 
-Three uploads on a seven-day week, not seven. A plan that posts daily is not a plan anyone
-recognises, and the empty days are what make the filled ones survive a bad week.
+Use the channel's own audience and performance evidence for timing. If none is available, label a
+proposed time as a test, not a universal best time. Keep dates and timezones explicit. This is a
+calendar draft unless the user separately requests scheduling through an available account tool.
 
 ## What to hand back
 
 A table: day, format, working title, the one sentence it promises, and what already exists for it.
 Then the honest line at the bottom - how many hours this costs, and what to drop first if the week
 goes wrong.
-
-## The gate
-
-Nothing here publishes. This skill writes and you publish. Every output ends in a block the user
-copies, and the last line of every run is the question: **ship it, or change it?**

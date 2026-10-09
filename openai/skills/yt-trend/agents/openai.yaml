@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Seasonal Planning"
+  short_description: "Plan timely topics with verified dates"
+  default_prompt: "Use $yt-trend to plan seasonal content and identify trends that need verification."
+
+policy:
+  allow_implicit_invocation: true

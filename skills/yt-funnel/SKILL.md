@@ -10,15 +10,18 @@ description: >-
 
 # yt-funnel
 
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
 Views are not the funnel. A viewer lands on one video, and whether they become a subscriber is
 decided on the channel page in the next ten seconds. Most creators never touch it. This does.
 
-For the per-video numbers (impressions, CTR, retention), that is **/yt-analytics**. This skill is the
+For the per-video numbers (impressions, CTR, retention), that is [/youtube-agent-pro:yt-analytics](../yt-analytics/SKILL.md). This skill is the
 layer above: what happens to a viewer *between* videos, and on the channel page itself.
 
 ## Before you work
 
-1. Read `~/.claude/youtube/voice.md` - the trailer and the channel description are the channel's
+1. Use the available voice profile or creator context (see the operating guide) - the trailer and the channel description are the channel's
    first sentence, in the creator's voice.
 2. Get the conversion reality: Studio -> Analytics -> Audience shows returning vs new viewers, and
    Content -> a video -> Analytics shows subscribers gained per video. Subscribers-per-view is the
@@ -28,12 +31,12 @@ layer above: what happens to a viewer *between* videos, and on the channel page 
 
 1. **The channel trailer** (shown to non-subscribers). Not a highlight reel - a 30-60s answer to "why
    subscribe": who it is for, what they get, how often. Treat its first 5 seconds like any hook and
-   run it through **/yt-script**'s hook logic.
+   run it through [/youtube-agent-pro:yt-script](../yt-script/SKILL.md)'s hook logic.
 2. **Above the fold.** The banner, the handle, the one-line description. A stranger reads these before
    a single video plays. They must say who the channel is for in one line.
 3. **The sections.** Order the channel homepage so the entry-point video (the one strangers find
    first) is top, a playlist that creates a binge is second, and the rest supports. Pair with
-   **/yt-series** for the binge path.
+   [/youtube-agent-pro:yt-series](../yt-series/SKILL.md) for the binge path.
 4. **The conversion video.** Find the one video with the best subscribers-per-view and treat it as the
    front door - link it, pin it, feature it. Make more like it.
 
@@ -50,8 +53,3 @@ layer above: what happens to a viewer *between* videos, and on the channel page 
 - the section order, with the entry-point and binge playlist named
 - the conversion video to feature, from the data
 - one line: the single highest-leverage change of the four
-
-## The gate
-
-This rewrites and recommends; it does not change your channel page. The last line is the question:
-**ship the trailer rewrite first, or the homepage reorder?**

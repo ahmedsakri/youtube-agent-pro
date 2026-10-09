@@ -10,15 +10,18 @@ description: >-
 
 # yt-brief
 
+Read the [shared operating guide](../yt/references/operating-guide.md) for profile lookup, helper paths,
+capability limits, and cross-skill routing before using this workflow.
+
 The gap between a good script and a watchable video is production, and production fails at the planning
 stage, not the editing one. This turns the words into a thing you can point a camera at.
 
-Run it after **/yt-script** - it reads the beats the script marked and turns each into a shot. If
+Run it after [/youtube-agent-pro:yt-script](../yt-script/SKILL.md) - it reads the beats the script marked and turns each into a shot. If
 there is no script yet, it can work from a tight idea, but a script first is far better.
 
 ## Before you plan
 
-1. Read `~/.claude/youtube/voice.md` for the format: on camera or not, the desk, whether there is an
+1. Use the available voice profile or creator context (see the operating guide) for the format: on camera or not, the desk, whether there is an
    intro, the usual length. The brief must match what the creator can actually film with what they have.
 2. Do not invent gear or locations the creator did not mention. Plan the shoot they can do this week.
 
@@ -49,8 +52,3 @@ there is no script yet, it can work from a tight idea, but a script first is far
 - the b-roll and on-screen-graphics checklists
 - the gear/setup list and the runtime budget
 - one line: the beat that will be hardest to film, and the simplest way to cover it
-
-## The gate
-
-This plans the shoot; it does not record, edit, or publish. The last line is the question: **shoot to
-this brief, or cut the two beats that need gear you do not have?**

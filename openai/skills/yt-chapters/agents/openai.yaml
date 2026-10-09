@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Chapters"
+  short_description: "Create accurate chapters from transcripts"
+  default_prompt: "Use $yt-chapters to draft and validate chapters from this timestamped transcript."
+
+policy:
+  allow_implicit_invocation: true

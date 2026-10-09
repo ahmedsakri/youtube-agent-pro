@@ -1,11 +1,27 @@
 {
   "name": "youtube-agent-pro",
-  "description": "Twenty-four Claude skills that run a YouTube channel end to end. Ideas scored before you film them, scripts off 21 hook formulas with a scored hook, titles and thumbnails linted as one pairing, a retention reader that names the second people leave, a funnel diagnoser that finds the one number holding a video back, a Shorts cutter, a cross-platform repurposer, series and playlist architecture, a sponsorship rate card from your own views, collab outreach, channel-page conversion, a seasonal trend calendar, a voiceprint that builds your voice.md from your own transcripts, production briefs, end-screen routing, chapters, SEO, comments, the weekly plan, a channel audit, and a virality engine that ranks your niche by outlier multiple rather than by channel size. Nothing publishes - every skill ends in a block you copy and the question: ship it, or change it?",
-  "version": "2.0.0",
-  "author": { "name": "Ahmed Sakri", "email": "ahmed.f.sakri@gmail.com" },
+  "description": "24 YouTube creator skills and 11 local Python tools for Claude Code: scripts, Shorts planning, titles, thumbnail concepts, SEO metadata and evidence-based analytics. Drafts and analysis; no bundled uploader.",
+  "version": "2.1.0",
+  "author": {
+    "name": "Ahmed Sakri",
+    "email": "ahmed.f.sakri@gmail.com"
+  },
   "homepage": "https://github.com/ahmedsakri/youtube-agent-pro",
   "repository": "https://github.com/ahmedsakri/youtube-agent-pro",
   "license": "MIT",
-  "keywords": ["youtube", "shorts", "retention", "thumbnails", "titles", "content", "video", "seo",
-    "analytics", "sponsorship", "repurpose", "creator", "growth"]
+  "keywords": [
+    "youtube",
+    "shorts",
+    "retention",
+    "thumbnails",
+    "titles",
+    "content",
+    "video",
+    "seo",
+    "analytics",
+    "sponsorship",
+    "repurpose",
+    "creator",
+    "growth"
+  ]
 }

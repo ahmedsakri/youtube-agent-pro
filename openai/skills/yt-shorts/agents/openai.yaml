@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Shorts Clip Planner"
+  short_description: "Find self-contained moments and clip plans"
+  default_prompt: "Use $yt-shorts to find Shorts candidates in this transcript and draft timecoded clip plans."
+
+policy:
+  allow_implicit_invocation: true

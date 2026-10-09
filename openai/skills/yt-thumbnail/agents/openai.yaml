@@ -1,0 +1,7 @@
+interface:
+  display_name: "YouTube Thumbnail Concepts"
+  short_description: "Develop readable, distinct thumbnail briefs"
+  default_prompt: "Use $yt-thumbnail to develop two distinct thumbnail concepts for this title."
+
+policy:
+  allow_implicit_invocation: true
