@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""Build the two edition guides. Requires reportlab for documentation only.
+"""Build the two edition guides and refresh the legacy Claude PDF alias.
 
 Run from any directory: python3 docs/build_guides.py
+Requires ReportLab for documentation only. A custom --output-dir writes only
+the two edition guides and leaves the repository's legacy alias unchanged.
 The runtime skills and their helpers do not depend on ReportLab.
 """
 
@@ -15,6 +17,7 @@ from reportlab.platypus import Paragraph
 
 
 ROOT = Path(__file__).resolve().parents[1]
+GUIDES_DIR = ROOT / "docs" / "guides"
 REPO = "https://github.com/ahmedsakri/youtube-agent-pro"
 W, H = 612, 792
 M, CW = 48, 516
@@ -235,7 +238,7 @@ def openai(output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output-dir", type=Path, default=ROOT / "docs" / "guides")
+    parser.add_argument("--output-dir", type=Path, default=GUIDES_DIR)
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for filename, build in (("YouTube-Agent-Pro-Claude.pdf", claude),
@@ -243,6 +246,11 @@ def main():
         path = args.output_dir / filename
         build(path)
         print(path)
+    if args.output_dir.resolve() == GUIDES_DIR.resolve():
+        # Preserve the old public URL without maintaining a third guide's prose.
+        legacy = ROOT / "docs" / "YouTube-Agent-Pro-Setup-Guide.pdf"
+        legacy.write_bytes((GUIDES_DIR / "YouTube-Agent-Pro-Claude.pdf").read_bytes())
+        print(legacy)
 
 
 if __name__ == "__main__":

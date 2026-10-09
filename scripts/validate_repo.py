@@ -50,6 +50,8 @@ def main():
     for name in ["Claude", "OpenAI"]:
         pdf = ROOT / "docs/guides" / ("YouTube-Agent-Pro-" + name + ".pdf")
         check(pdf.read_bytes().startswith(b"%PDF-"), "Missing or invalid PDF: " + name)
+    check((ROOT / "docs/YouTube-Agent-Pro-Setup-Guide.pdf").read_bytes() ==
+          (ROOT / "docs/guides/YouTube-Agent-Pro-Claude.pdf").read_bytes(), "Legacy guide URL must serve the current Claude guide")
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
