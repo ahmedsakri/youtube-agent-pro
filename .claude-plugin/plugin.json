@@ -22,6 +22,9 @@
     "sponsorship",
     "repurpose",
     "creator",
-    "growth"
+    "growth",
+    "agents",
+    "subagents",
+    "claude-code"
   ]
 }

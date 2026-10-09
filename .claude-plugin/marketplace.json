@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "youtube-agent-pro",
-      "description": "24 YouTube creator workflows and 11 Python helpers for scripts, SEO metadata, Shorts planning and analytics.",
+      "description": "24 YouTube creator workflows, 5 specialist subagents and 11 Python helpers for scripts, SEO metadata, Shorts planning and analytics.",
       "source": "./",
       "category": "productivity",
       "homepage": "https://github.com/ahmedsakri/youtube-agent-pro"

@@ -1,0 +1,36 @@
+# YouTube Agent Pro
+
+> Open-source (MIT) YouTube creator toolkit for AI assistants: 24 skills, 5 specialist Claude Code
+> subagents and 11 local Python tools for Claude Code, ChatGPT and OpenAI Codex. Plan videos and
+> Shorts, write scripts, titles, thumbnail text and SEO descriptions, and analyze your own YouTube
+> Analytics exports. No API key, no uploader; your data stays local.
+
+Key facts:
+
+- Editions: Claude Code (skills + subagents), OpenAI Codex, ChatGPT.
+- Skills live in `skills/yt-*`; agents in `agents/yt-*.md`; Python tools inside each skill folder.
+- Agents: yt-producer (idea → publish-ready package), yt-strategist (what to make & when),
+  yt-packager (titles, thumbnails, SEO, end screens), yt-analyst (analytics, retention, audit),
+  yt-editor (editing, Shorts, repurposing, chapters, comments, sponsorships).
+- Scope: produces drafts, plans and analysis only. No video upload, scheduling or account access.
+- License: MIT. Independent project, not affiliated with YouTube, Anthropic or OpenAI.
+
+## Docs
+
+- [README](https://github.com/ahmedsakri/youtube-agent-pro/blob/main/README.md): overview, install for each edition, the 24 workflows, agents and FAQ.
+- [Agents guide](https://github.com/ahmedsakri/youtube-agent-pro/blob/main/agents/README.md): the 5 subagents, file convention and how they orchestrate skills.
+- [OpenAI edition](https://github.com/ahmedsakri/youtube-agent-pro/blob/main/openai/README.md): Codex and ChatGPT setup, installer and capability limits.
+- [ChatGPT setup](https://github.com/ahmedsakri/youtube-agent-pro/blob/main/openai/chatgpt/README.md): instructions, workflow files and execution modes.
+- [Changelog](https://github.com/ahmedsakri/youtube-agent-pro/blob/main/CHANGELOG.md): release history.
+- [Contributing](https://github.com/ahmedsakri/youtube-agent-pro/blob/main/CONTRIBUTING.md): how to propose changes.
+
+## Install (Claude Code)
+
+- `/plugin marketplace add ahmedsakri/youtube-agent-pro`
+- `/plugin install youtube-agent-pro@youtube-agent-pro`
+- For subagents, copy `agents/yt-*.md` into `~/.claude/agents/`.
+
+## Optional
+
+- [YouTube metadata guidance](https://github.com/ahmedsakri/youtube-agent-pro/blob/main/skills/yt-seo/references/youtube-metadata.md): the SEO rules the skills follow.
+- [Validation report](https://github.com/ahmedsakri/youtube-agent-pro/blob/main/openai/docs/VALIDATION.md): tests and evidence.
